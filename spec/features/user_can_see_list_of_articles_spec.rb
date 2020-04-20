@@ -3,15 +3,21 @@ require 'rails_helper'
 feature 'list articles on index page' do
     context 'with articles in db' do
         before do
+            create(:article, title: 'A breaking news item', content: 'Some breaking action')
+            create(:article, title: 'Learn Rails 5', content: 'Build awesome rails applications')
+
             visit root_path
+            click_on 'A breaking news item'
         end
 
-        it 'displays first article title' do
-            expect(page).to have_content 'A breaking news item'
-        end
+        context 'Article displays' do
+            it 'title' do
+                expect(page).to have_content 'A breaking news item'
+            end         
 
-        it 'displays second article title' do
-            expect(page).to have_content 'Some really breaking action'
+            it 'content' do
+                expect(page).to have_content 'Some really breaking action'
+            end
         end
     end
 end
