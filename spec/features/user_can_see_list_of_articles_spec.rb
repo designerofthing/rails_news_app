@@ -16,7 +16,7 @@ feature 'list articles on index page' do
             end         
 
             it 'content' do
-                expect(page).to have_content 'Some really breaking action'
+                expect(page).to have_content 'Some breaking action'  
             end
         end
     end
