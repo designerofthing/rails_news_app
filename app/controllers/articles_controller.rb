@@ -4,13 +4,17 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new
   end
 
   def create
-    @article = Article.new(params[:article])
+    @article = Article.create(params.require(:article).permit(:title, :content))
 
-    @article.save
-    redirect_to @articles
+    if @article.persisted?
+    redirect_to @article, notice: "Article was created"
+    else
+             
+    end
   end
 
   def show
