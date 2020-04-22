@@ -17,5 +17,11 @@ feature 'User can create articles' do
           article = Article.find_by(title: 'Happy holidays')
           expect(current_path).to eq article_path(article)
         end
+
+        it 'User should see success message' do
+            expect(page).to have_content 'Article was successfully dreated.'
+        end
+        
+
     end
 end
