@@ -10,11 +10,12 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.create(params.require(:article).permit(:title, :content))
 
-    if @article.persisted?
+    if @article.persisted? && @article.title != "" && @article.content != ""
     redirect_to @article
     flash[:notice] = "Article was successfully created."
     else
-      flash[:notice] = "Whoops, something went wrong"           
+      flash[:notice] = "Whoops, something went wrong"          
+      render "new"
     end
   end
 
