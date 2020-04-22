@@ -22,6 +22,12 @@ feature 'User can create articles' do
             expect(page).to have_content 'Article was successfully created.'
         end
 
+        it 'User should see article title' do
+          expect(page).to have_content 'Happy holidays'
+        end
 
+        it 'User should see article content' do
+          expect(page).to have_content 'Buy your gifts now!'
+        end
     end
 end
