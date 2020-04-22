@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
     if @article.persisted?
     redirect_to @article
-    flash[:notice] = "Article was created"
+    flash[:notice] = "Article was successfully created."
     else
       flash[:notice] = "Whoops, something went wrong"           
     end

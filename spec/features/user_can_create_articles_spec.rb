@@ -19,9 +19,9 @@ feature 'User can create articles' do
         end
 
         it 'User should see success message' do
-            expect(page).to have_content 'Article was successfully dreated.'
+            expect(page).to have_content 'Article was successfully created.'
         end
-        
+
 
     end
 end
