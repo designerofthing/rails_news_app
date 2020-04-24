@@ -7,8 +7,12 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def create
-    @article = Article.create(params.require(:article).permit(:title, :content))
+    @article = Article.create(article_params)
 
     if @article.persisted? && @article.title != '' && @article.content != ''
       redirect_to @article
@@ -19,23 +23,24 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def show
-    @article = Article.find(params[:id])
-  end
-
   def update
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
       redirect_to @article
+      flash[:notice] = 'Article was successfully saved.'
     else
+      flash[:notice] = 'Whoops, something went wrong'
       render 'edit'
     end
+  end
+
+  def show
+    @article = Article.find(params[:id])
   end
 
   private
   def article_params
     params.require(:article).permit(:title, :content)
   end
-  
 end

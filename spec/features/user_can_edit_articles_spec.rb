@@ -3,14 +3,17 @@ require 'rails_helper'
 feature 'User can edit articles' do
     before do
       visit root_path
+      click_on "New Article"
+      fill_in "Title", with: "Happy holidays"
+      fill_in "Content", with: "Buy your gifts now!"
+      click_on "Create Article"
+      click_on 'Edit Article'
     end
 
     context 'Successfully edit an article [Happy Path]' do
         before do
-          click_on 'Happy holidays'
-          click_on 'Edit Article'
           fill_in "Title", with: "Not so Happy holidays"
-          fill_in "Content", with: "Don't Buy your gifts now it's a con!"
+          fill_in "Content", with: "Don't buy your gifts now it's a con!"
           click_on "Save Changes"
         end
         
