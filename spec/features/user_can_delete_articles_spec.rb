@@ -9,10 +9,6 @@ feature 'user can delete an article' do
   end
 
   context 'Successfully delete an article [Happy Path]' do
-    before do
-      edit_new
-    end
-
     it 'User should see success message' do
       expect(page).to have_content 'Article was successfully deleted.'
     end
