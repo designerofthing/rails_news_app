@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User can edit articles' do
-    before do
+  before do
       visit root_path
       click_on "New Article"
       fill_in "Title", with: "Happy holidays"
@@ -10,14 +10,14 @@ feature 'User can edit articles' do
       click_on 'Edit Article'
     end
 
-    context 'Successfully edit an article [Happy Path]' do
-        before do
-          fill_in "Title", with: "Not so Happy holidays"
-          fill_in "Content", with: "Don't buy your gifts now it's a con!"
-          click_on "Save Changes"
-        end
+        context 'Successfully edit an article [Happy Path]' do
+            before do
+              fill_in "Title", with: "Not so Happy holidays"
+              fill_in "Content", with: "Don't buy your gifts now it's a con!"
+              click_on "Save Changes"
+            end
         
-        it 'User should be on article show page' do
+          it 'User should be on article show page' do
             article = Article.find_by(title: 'Not so Happy holidays')
             expect(current_path).to eq article_path(article)
           end
@@ -31,15 +31,19 @@ feature 'User can edit articles' do
           end
   
           it 'User should see article content' do
-            expect(page).to have_content "Don't Buy your gifts now it's a con!"
+            expect(page).to have_content "Don't buy your gifts now it's a con!"
           end
-        end
-    end    
+    end
+       
     
     context "User edits title away for the article [Sad Path]" do
         before do
-          fill_in "Title", with: ""
-          click_on "Save Article"
+          fill_in "Title", with: "Not so Happy holidays"
+          fill_in "Content", with: "Don't buy your gifts now it's a con!"
+          click_on "Save Changes"
+          click_on 'Edit Article'
+          fill_in "article_title", with: ""
+          click_on "Save Changes"
         end
   
         it 'User should see error message' do
@@ -49,12 +53,16 @@ feature 'User can edit articles' do
       
     context "User edits content away for the article [Sad Path]" do
         before do
+          fill_in "Title", with: "Not so Happy holidays"
+          fill_in "Content", with: "Don't buy your gifts now it's a con!"
+          click_on "Save Changes"
+          click_on 'Edit Article'
           fill_in "Content", with: ""
-          click_on "Save Article"
+          click_on "Save Changes"
         end
   
         it 'User should see error message' do
           expect(page).to have_content 'Whoops, something went wrong'
         end
     end        
-
+end
