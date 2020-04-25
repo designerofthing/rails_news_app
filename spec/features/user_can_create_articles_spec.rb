@@ -1,55 +1,59 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'User can create articles' do
+    let(:user) { create(:user, email: 'test@gmail.com', password: '12345678') }
     before do
-        visit root_path
-        click_on "New Article"
+    login_as(user, scope: :user)
+    visit root_path
+    click_on 'New Article'
+  end
+
+  context 'Successfully create an article [Happy Path]' do
+    before do
+      fill_in 'Title', with: 'Happy holidays'
+      fill_in 'Content', with: 'Buy your gifts now!'
+      click_on 'Create Article'
     end
 
-    context "Successfully create an article [Happy Path]" do
-        before do
-          fill_in "Title", with: "Happy holidays"
-          fill_in "Content", with: "Buy your gifts now!"
-          click_on "Create Article"
-        end
-      
-        it 'User should be on article show page' do
-          article = Article.find_by(title: 'Happy holidays')
-          expect(current_path).to eq article_path(article)
-        end
-
-        it 'User should see success message' do
-            expect(page).to have_content 'Article was successfully created.'
-        end
-
-        it 'User should see article title' do
-          expect(page).to have_content 'Happy holidays'
-        end
-
-        it 'User should see article content' do
-          expect(page).to have_content 'Buy your gifts now!'
-        end
+    it 'User should be on article show page' do
+      article = Article.find_by(title: 'Happy holidays')
+      expect(current_path).to eq article_path(article)
     end
 
-    context "User doesn't enter content for the article [Sad Path]" do
-      before do
-        fill_in "Title", with: "Happy holidays"
-        click_on "Create Article"
-      end
-
-      it 'User should see error message' do
-        expect(page).to have_content 'Whoops, something went wrong'
-      end
+    it 'User should see success message' do
+      expect(page).to have_content 'Article was successfully created.'
     end
-    
-    context "User doesn't enter a title for the article [Sad Path]" do
-      before do
-        fill_in "Content", with: "Buy your gifts now!"
-        click_on "Create Article"
-      end
 
-      it 'User should see error message' do
-        expect(page).to have_content 'Whoops, something went wrong'
-      end
+    it 'User should see article title' do
+      expect(page).to have_content 'Happy holidays'
     end
+
+    it 'User should see article content' do
+      expect(page).to have_content 'Buy your gifts now!'
+    end
+  end
+
+  context "User doesn't enter content for the article [Sad Path]" do
+    before do
+      fill_in 'Title', with: 'Happy holidays'
+      click_on 'Create Article'
+    end
+
+    it 'User should see error message' do
+      expect(page).to have_content 'Whoops, something went wrong'
+    end
+  end
+
+  context "User doesn't enter a title for the article [Sad Path]" do
+    before do
+      fill_in 'Content', with: 'Buy your gifts now!'
+      click_on 'Create Article'
+    end
+
+    it 'User should see error message' do
+      expect(page).to have_content 'Whoops, something went wrong'
+    end
+  end
 end
