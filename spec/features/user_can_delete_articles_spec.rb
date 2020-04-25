@@ -3,7 +3,9 @@
 require 'rails_helper'
 
 feature 'user can delete an article' do
-  before do
+  let(:user) { create(:user, email: 'test@gmail.com', password: '12345678') }
+    before do
+    login_as(user, scope: :user)
     visit root_path
     delete_input
   end
