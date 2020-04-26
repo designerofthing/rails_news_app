@@ -14,6 +14,8 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise', '~> 4.2'
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
