@@ -15,6 +15,9 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
- .center {
+ .jumbotron {
+    text-align: center;
+}
+.list-group {
     text-align: center;
 }
