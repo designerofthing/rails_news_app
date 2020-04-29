@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-feature 'check user db table' do
-  let(:user) { FactoryBot.create(:user, email: 'testing@gmail.com') }
+describe 'check user db table' do
+ 
 
   describe User, type: :model do
     describe 'user db table' do
@@ -17,6 +17,7 @@ feature 'check user db table' do
     end
 
     describe 'Factory' do
+      let(:user) { FactoryBot.create(:user, email: 'testing@gmail.com') }
       it 'should have valid Factory' do
         expect(user).to be_valid
       end
