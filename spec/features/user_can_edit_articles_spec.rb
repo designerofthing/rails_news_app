@@ -3,7 +3,9 @@
 require 'rails_helper'
 
 feature 'User can edit articles' do
-  before do
+  let(:user) { create(:user, email: 'test@gmail.com', password: '12345678') }
+    before do
+    login_as(user, scope: :user)
     visit root_path
     edit_input
   end

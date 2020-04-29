@@ -1,6 +1,19 @@
-<ul>
-  <% @articles.each do |article| %>
-    <li><%= link_to article.title, article_path(article) %></li><br />
+
+<div class="jumbotron">
+<h2>A Site where the News just isn't real!</h2><br>
+<h2><u>Articles</u></h2> 
+</div>
+<div class=>  
+<ul class="list-group">
+  
+  </li><% @articles.each do |article| %>
+ <h3><%= link_to article.title, article_path(article) %></h3><br />
   <% end %>
+  </li>
 </ul>
-<%= link_to "New Article", new_article_path %> 
+
+</div>
+
+           
+
+

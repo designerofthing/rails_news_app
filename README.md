@@ -1,24 +1,76 @@
-# README
+# News Application
+By Steve Watson 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## The code:
+A News/blog application with user authentication written in Ruby on Rails
 
-Things you may want to cover:
+ruby '2.5.1'
 
-* Ruby version
+'rails', '~> 6.0.2', '>= 6.0.2.2'
 
-* System dependencies
+## Dependencies: 
 
-* Configuration
+'jbuilder', '~> 2.7'
 
-* Database creation
+'pg', '>= 0.18', '< 2.0'
 
-* Database initialization
+'puma', '~> 4.1'
 
-* How to run the test suite
+'sass-rails', '>= 6'
 
-* Services (job queues, cache servers, search engines, etc.)
+'turbolinks', '~> 5'
 
-* Deployment instructions
+'webpacker', '~> 4.0'
 
-* ...
+'devise', '~> 4.2'
+
+'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+
+'jquery-rails'
+
+
+'byebug',
+
+'capybara'
+
+'coveralls', require: false
+
+'factory_bot_rails'
+
+'pry-rails'
+
+'rspec-rails'
+
+'shoulda-matchers'
+
+
+'listen', '>= 3.0.5', '< 3.2'
+
+spring'
+
+'spring-watcher-listen', '~> 2.0.0'
+
+'web-console', '>= 3.3.0'
+
+
+
+## Setup: 
+
+- Clone this repository 
+- Run bundler to install gems
+- Run rails db:create
+
+
+## Deployment: 
+
+https://steveaut2020.herokuapp.com/
+
+## Updates/improvment plans:
+
+* Improve UI for this application
+* Refactor code.
+* Add image hosting
+
+
+
+<br> Licensed under MIT license

@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ .jumbotron {
+    text-align: center;
+}
+.list-group {
+    text-align: center;
+}
